@@ -6,7 +6,7 @@ import com.dtshop.app.Dto.AdministrativeUnitDto;
 import com.dtshop.app.Dto.FunctionDto.ResponseObject;
 import com.dtshop.app.Dto.FunctionDto.SearchDto;
 import com.dtshop.app.Repository.AdministrativeRepository;
-import com.dtshop.app.Service.AdministrativeService;
+import com.dtshop.app.Service.AdministrativeUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AdministrativeServiceImpl implements AdministrativeService {
+public class AdministrativeUnitServiceImpl implements AdministrativeUnitService {
 
     @Autowired
     private AdministrativeRepository administrativeRepos;
@@ -35,6 +35,20 @@ public class AdministrativeServiceImpl implements AdministrativeService {
     @Override
     public List<AdministrativeUnitDto> getAllDto() {
         return this.administrativeRepos.getAllDto();
+    }
+
+    @Override
+    public List<AdministrativeUnit> getAllProvince() {
+        return this.administrativeRepos.getAllProvince();
+    }
+
+    @Override
+    public List<AdministrativeUnit> getAllByParentId(Long id) {
+        if(id != null) {
+            List<AdministrativeUnit> result = this.administrativeRepos.getAllByParentId(id);
+            return result;
+        }
+        return null;
     }
 
     @Override
@@ -59,6 +73,17 @@ public class AdministrativeServiceImpl implements AdministrativeService {
             return new ResponseObject("404", "Can't not find by id: " + id, null);
         }
         return new ResponseObject("500", "ID is null", null);
+    }
+
+    @Override
+    public Boolean checkCode(String code) {
+        if(code != null) {
+            Long numberResult = this.administrativeRepos.checkCode(code);
+            if(numberResult == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
