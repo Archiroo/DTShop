@@ -1,10 +1,12 @@
 const routes = {
     home: '/',
-    product: '/product',
+    products: '/products',
     drinkMenu: '/drink-menu',
     aboutUs: '/about-us',
     blog: '/blog',
     collection: '/collection',
+    cart: '/cart',
+    vouchers: 'vouchers',
 
 
 }

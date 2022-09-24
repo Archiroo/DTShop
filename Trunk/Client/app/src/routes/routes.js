@@ -6,6 +6,8 @@ import DrinkMenu from '~/pages/DrinkMenu';
 import AboutUs from '~/pages/AboutUs';
 import Blog from '~/pages/Blog';
 import Collection from '~/pages/Collection';
+import Cart from '../pages/Cart';
+import Vouchers from '../pages/Vouchers';
 
 // Publics routes
 const publicRoutes = [
@@ -15,7 +17,7 @@ const publicRoutes = [
         // layout: null  (không có layout)
     },
     {
-        path: config.routes.product,
+        path: config.routes.products,
         component: Product,
     },
     {
@@ -33,6 +35,14 @@ const publicRoutes = [
     {
         path: config.routes.collection,
         component: Collection,
+    },
+    {
+        path: config.routes.cart,
+        component: Cart,
+    },
+    {
+        path: config.routes.vouchers,
+        component: Vouchers,
     },
 ];
 
