@@ -3,6 +3,7 @@ package com.dtshop.app.Domain;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name="tbl_user")
@@ -26,6 +27,10 @@ public class User {
 
     @Column(name="active")
     private Integer active; // 0: Chưa kích hoạt, 1: Đã kích hoạt
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RoleUser> roleUsers;
+
 
     public Long getId() {
         return id;
@@ -75,4 +80,11 @@ public class User {
         this.active = active;
     }
 
+    public Set<RoleUser> getUserRoles() {
+        return roleUsers;
+    }
+
+    public void setUserRoles(Set<RoleUser> roleUsers) {
+        this.roleUsers = roleUsers;
+    }
 }

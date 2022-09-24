@@ -1,9 +1,13 @@
 package com.dtshop.app.Service.ServiceImpl;
 
+import com.dtshop.app.Domain.Role;
 import com.dtshop.app.Domain.User;
+import com.dtshop.app.Domain.RoleUser;
 import com.dtshop.app.Dto.FunctionDto.ResponseObject;
 import com.dtshop.app.Dto.FunctionDto.SearchDto;
+import com.dtshop.app.Dto.RoleDto;
 import com.dtshop.app.Dto.UserDto;
+import com.dtshop.app.Repository.RoleRepository;
 import com.dtshop.app.Repository.UserRepository;
 import com.dtshop.app.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +29,9 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepos;
+
+    @Autowired
+    private RoleRepository roleRepos;
 
     @PersistenceContext
     private EntityManager manager;
@@ -89,6 +97,36 @@ public class UserServiceImpl implements UserService {
         }
         if(dto.getActive() != null) {
             entity.setActive(dto.getActive());
+        }
+        // Lưu đồng thời sang bảng User_Role
+        if(dto.getRoles() != null && dto.getRoles().size() > 0) {
+            HashSet<RoleUser> roleUserDtos = new HashSet<>();
+            for(RoleDto roleDto : dto.getRoles()) {
+                RoleUser roleUser = new RoleUser();
+                Role role = null;
+                if(roleDto != null) {
+                    if(roleDto.getId() != null) {
+                        Optional<Role> roleOptional = this.roleRepos.findById(roleDto.getId());
+                        if(roleOptional.isPresent()) {
+                            role = roleOptional.get();
+                        }
+                    }
+                }
+                roleUser.setUser(entity);
+                if(role != null) {
+                    roleUser.setRole(role);
+                }
+                roleUserDtos.add(roleUser);
+            }
+            // Trường hợp đã có dl
+            if(entity.getUserRoles() != null) {
+                entity.getUserRoles().clear();
+                entity.getUserRoles().addAll(roleUserDtos);
+            } else {
+                entity.setUserRoles(roleUserDtos);
+            }
+        } else {
+            entity.getUserRoles().clear();
         }
         entity = this.userRepos.save(entity);
         return new UserDto(entity, true);

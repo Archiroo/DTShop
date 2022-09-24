@@ -1,8 +1,11 @@
 package com.dtshop.app.Dto;
 
 import com.dtshop.app.Domain.User;
+import com.dtshop.app.Domain.RoleUser;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDto {
     private Long id;
@@ -12,6 +15,8 @@ public class UserDto {
 
     private Integer level;
     private Integer active;
+
+    private List<RoleDto> roles;
 
     public UserDto() {
 
@@ -24,6 +29,13 @@ public class UserDto {
         this.password = entity.getPassword();
         this.level = entity.getLevel();
         this.active = entity.getActive();
+        // Map bảng trung gian
+        if(entity.getUserRoles() != null && !entity.getUserRoles().isEmpty()) {
+            this.roles = new ArrayList<>();
+            for(RoleUser roleUser : entity.getUserRoles()) {
+                this.roles.add(new RoleDto(roleUser.getRole()));
+            }
+        }
     }
 
     public UserDto(User entity, boolean arc) {
@@ -33,6 +45,13 @@ public class UserDto {
         this.password = entity.getPassword();
         this.level = entity.getLevel();
         this.active = entity.getActive();
+        // Map bảng trung gian
+        if(entity.getUserRoles() != null && !entity.getUserRoles().isEmpty()) {
+            this.roles = new ArrayList<>();
+            for(RoleUser roleUser : entity.getUserRoles()) {
+                this.roles.add(new RoleDto(roleUser.getRole()));
+            }
+        }
     }
 
     public Long getId() {
@@ -81,5 +100,13 @@ public class UserDto {
 
     public void setActive(Integer active) {
         this.active = active;
+    }
+
+    public List<RoleDto> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleDto> roles) {
+        this.roles = roles;
     }
 }
