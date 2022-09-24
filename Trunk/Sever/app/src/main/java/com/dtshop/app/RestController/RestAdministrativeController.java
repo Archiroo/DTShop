@@ -33,7 +33,7 @@ public class RestAdministrativeController {
     }
 
     @RequestMapping(value = "/getEntity/{id}", method = RequestMethod.GET)
-    public ResponseObject getEntity(@PathVariable Long id) {
+    public AdministrativeUnitDto getEntity(@PathVariable Long id) {
         return this.administrativeUnitService.getEntity(id);
     }
 
@@ -57,7 +57,7 @@ public class RestAdministrativeController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseObject deleteDto(@PathVariable Long id) {
+    public AdministrativeUnitDto deleteDto(@PathVariable Long id) {
         return this.administrativeUnitService.deleteDto(id);
     }
 

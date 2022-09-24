@@ -12,13 +12,13 @@ public interface UserService {
 
     Page<UserDto> getPageDto(int pageIndex, int pageSize);
 
-    ResponseObject getEntity(Long id);
+    UserDto getEntity(Long id);
 
     UserDto createDto(Long id, UserDto dto);
 
     UserDto updateDto(Long id, UserDto dto);
 
-    ResponseObject deleteDto(Long id);
+    UserDto deleteDto(Long id);
 
     Page<UserDto> seachByPage(SearchDto searchDto);
 }

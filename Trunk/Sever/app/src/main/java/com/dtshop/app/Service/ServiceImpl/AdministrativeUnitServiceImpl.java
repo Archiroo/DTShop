@@ -62,17 +62,16 @@ public class AdministrativeUnitServiceImpl implements AdministrativeUnitService 
     }
 
     @Override
-    public ResponseObject getEntity(Long id) {
+    public AdministrativeUnitDto getEntity(Long id) {
         AdministrativeUnit entity = null;
         if(id != null) {
             Optional<AdministrativeUnit> administrativeUnitOptional = this.administrativeRepos.findById(id);
             if(administrativeUnitOptional.isPresent()) {
                 entity = administrativeUnitOptional.get();
-                return new ResponseObject("200", "Success", entity);
+                return new AdministrativeUnitDto(entity, true);
             }
-            return new ResponseObject("404", "Can't not find by id: " + id, null);
         }
-        return new ResponseObject("500", "ID is null", null);
+        return null;
     }
 
     @Override
@@ -140,18 +139,17 @@ public class AdministrativeUnitServiceImpl implements AdministrativeUnitService 
     }
 
     @Override
-    public ResponseObject deleteDto(Long id) {
+    public AdministrativeUnitDto deleteDto(Long id) {
         AdministrativeUnit entity = null;
         if(id != null) {
             Optional<AdministrativeUnit> administrativeUnitOptional = this.administrativeRepos.findById(id);
             if(administrativeUnitOptional.isPresent()) {
                 entity = administrativeUnitOptional.get();
                 this.administrativeRepos.delete(entity);
-                return new ResponseObject("200", "Success", entity);
+                return new AdministrativeUnitDto(entity, true);
             }
-            return new ResponseObject("404", "Can't not find by id: " + id, null);
         }
-        return new ResponseObject("500", "ID is null", null);
+        return null;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.dtshop.app.RestController;
 
-import com.dtshop.app.Dto.FunctionDto.ResponseObject;
 import com.dtshop.app.Dto.FunctionDto.SearchDto;
 import com.dtshop.app.Dto.UserDto;
 import com.dtshop.app.Service.UserService;
@@ -27,7 +26,7 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/getEntity/{id}", method = RequestMethod.GET)
-    public ResponseObject getEntity(@PathVariable Long id) {
+    public UserDto getEntity(@PathVariable Long id) {
         return this.userService.getEntity(id);
     }
 
@@ -42,7 +41,7 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/deleteDto/{id}", method = RequestMethod.DELETE)
-    public ResponseObject deleteDto(@PathVariable Long id) {
+    public UserDto deleteDto(@PathVariable Long id) {
         return this.userService.deleteDto(id);
     }
 

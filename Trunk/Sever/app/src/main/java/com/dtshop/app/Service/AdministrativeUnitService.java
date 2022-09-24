@@ -17,7 +17,7 @@ public interface AdministrativeUnitService {
 
     List<AdministrativeUnitDto> saveList(List<AdministrativeUnitDto> listAdministrative);
 
-    ResponseObject getEntity(Long id);
+    AdministrativeUnitDto getEntity(Long id);
 
     Boolean checkCode(String code);
 
@@ -25,7 +25,7 @@ public interface AdministrativeUnitService {
 
     AdministrativeUnitDto updateDto(Long id, AdministrativeUnitDto dto);
 
-    ResponseObject deleteDto(Long id);
+    AdministrativeUnitDto deleteDto(Long id);
 
     Page<AdministrativeUnitDto> getPageDto(int pageIndex, int pageSize);
 
