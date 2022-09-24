@@ -54,7 +54,7 @@ public class AdministrativeUnitServiceImpl implements AdministrativeUnitService 
     @Override
     public List<AdministrativeUnitDto> saveList(List<AdministrativeUnitDto> listAdministrative) {
         ArrayList<AdministrativeUnitDto> ret = new ArrayList<AdministrativeUnitDto>();
-        for(int i=0; i<ret.size(); i++) {
+        for(int i=0; i<listAdministrative.size(); i++) {
             AdministrativeUnitDto dto = listAdministrative.get(i);
             this.updateDto(dto.getId(), dto);
         }
