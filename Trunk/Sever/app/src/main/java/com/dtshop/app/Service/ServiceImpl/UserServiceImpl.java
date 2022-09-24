@@ -49,14 +49,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getEntity(Long id) {
+    public ResponseObject getEntity(Long id) {
         User entity = null;
         if(id != null) {
             Optional<User> userSerOptional = this.userRepos.findById(id);
             if (userSerOptional.isPresent()) {
                 entity = userSerOptional.get();
-                return new UserDto(entity, true);
+                return new ResponseObject("200", "Success", entity);
             }
+            return new ResponseObject("404", "Can't not find by ID: " + id, null);
         }
         return null;
     }
@@ -132,15 +133,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto deleteDto(Long id) {
+    public ResponseObject deleteDto(Long id) {
         User entity = null;
         if(id != null) {
-            Optional<User> userOptional = this.userRepos.findById(id);
-            if(userOptional.isPresent()) {
-                entity = userOptional.get();
+            Optional<User> userSerOptional = this.userRepos.findById(id);
+            if (userSerOptional.isPresent()) {
+                entity = userSerOptional.get();
                 this.userRepos.delete(entity);
-                return new UserDto(entity, true);
+                return new ResponseObject("200", "Success", entity);
             }
+            return new ResponseObject("404", "Can't not find by ID: " + id, null);
         }
         return null;
     }
