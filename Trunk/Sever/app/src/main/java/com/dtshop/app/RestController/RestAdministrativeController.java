@@ -5,7 +5,6 @@ import com.dtshop.app.Dto.AdministrativeUnitDto;
 import com.dtshop.app.Dto.FunctionDto.ResponseObject;
 import com.dtshop.app.Dto.FunctionDto.SearchDto;
 import com.dtshop.app.Service.AdministrativeUnitService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;

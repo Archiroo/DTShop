@@ -5,6 +5,8 @@ public class SearchDto {
     private Integer pageSize;
     private String nameOrCode;
 
+    private Integer numberSearch;
+
     public Integer getPageIndex() {
         return pageIndex;
     }
@@ -27,5 +29,13 @@ public class SearchDto {
 
     public void setNameOrCode(String nameOrCode) {
         this.nameOrCode = nameOrCode;
+    }
+
+    public Integer getNumberSearch() {
+        return numberSearch;
+    }
+
+    public void setNumberSearch(Integer numberSearch) {
+        this.numberSearch = numberSearch;
     }
 }
