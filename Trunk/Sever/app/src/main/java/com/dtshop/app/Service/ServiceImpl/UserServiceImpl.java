@@ -66,14 +66,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public RoleUser getUserByUsername(String username) {
-        RoleUser entity = null;
+    public UserDto getUserByUsername(String username) {
+        User entity = null;
         if(username != null) {
             Long number = this.userRepos.checkUsername(username);
             if(number==1) {
                 entity = this.roleUserRepos.getUserByUsername(username);
-                return entity;
+                return new UserDto(entity, true);
             }
+            return null;
         }
         return null;
     }

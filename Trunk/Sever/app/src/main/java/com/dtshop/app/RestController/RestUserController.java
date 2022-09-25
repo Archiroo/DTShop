@@ -34,7 +34,7 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/getUserByUsername/{username}", method = RequestMethod.GET)
-    public RoleUser getUserByUsername(@PathVariable String username) {
+    public UserDto getUserByUsername(@PathVariable String username) {
         return this.userService.getUserByUsername(username);
     }
     @RequestMapping(value = "/createDto", method = RequestMethod.POST)
