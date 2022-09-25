@@ -1,5 +1,6 @@
 package com.dtshop.app.Service;
 
+import com.dtshop.app.Domain.RoleUser;
 import com.dtshop.app.Domain.User;
 import com.dtshop.app.Dto.FunctionDto.ResponseObject;
 import com.dtshop.app.Dto.FunctionDto.SearchDto;
@@ -14,6 +15,8 @@ public interface UserService {
     Page<UserDto> getPageDto(int pageIndex, int pageSize);
 
     UserDto getEntity(Long id);
+
+    RoleUser getUserByUsername(String username);
 
     UserDto createDto(Long id, UserDto dto);
 
