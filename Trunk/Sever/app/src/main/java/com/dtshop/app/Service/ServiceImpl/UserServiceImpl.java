@@ -67,12 +67,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserByUsername(String username) {
-        User entity = null;
         if(username != null) {
             Long number = this.userRepos.checkUsername(username);
             if(number==1) {
-                entity = this.roleUserRepos.getUserByUsername(username);
-                return new UserDto(entity, true);
+                return this.roleUserRepos.getUserByUsername(username);
             }
             return null;
         }
