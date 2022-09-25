@@ -76,7 +76,6 @@ Button.propTypes = {
     large: PropTypes.bool,
     text: PropTypes.bool,
     disabled: PropTypes.bool,
-    rounded: PropTypes.string,
     className: PropTypes.string,
     leftIcon: PropTypes.node,
     rightIcon: PropTypes.node,

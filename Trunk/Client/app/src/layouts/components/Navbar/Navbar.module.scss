@@ -8,13 +8,17 @@
 .navbar-item {
     font-size: 1.8rem;
     margin: 0 4px;
+
+    .navbar-link {
+        position: relative;
+        padding: 8px 6px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+    }
+
 }
 
-.navbar-link {
-    position: relative;
-    padding: 8px 6px;
-    font-weight: 600;
-}
 
 .navbar-link.text {
     background-color: transparent;
@@ -44,6 +48,8 @@
     justify-content: center;
     background-color: var(--white);
     min-width: unset;
+    padding-left: 18px;
+    padding-right: 18px;
     font-size: 1.6rem;
     border-radius: 9999px;
     transition: color 0.15s ease;
