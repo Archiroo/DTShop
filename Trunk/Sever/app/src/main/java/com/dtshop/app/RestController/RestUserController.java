@@ -1,5 +1,7 @@
 package com.dtshop.app.RestController;
 
+import com.dtshop.app.Domain.RoleUser;
+import com.dtshop.app.Domain.User;
 import com.dtshop.app.Dto.FunctionDto.ResponseObject;
 import com.dtshop.app.Dto.FunctionDto.SearchDto;
 import com.dtshop.app.Dto.UserDto;
@@ -31,6 +33,10 @@ public class RestUserController {
         return this.userService.getEntity(id);
     }
 
+    @RequestMapping(value = "/getUserByUsername/{username}", method = RequestMethod.GET)
+    public UserDto getUserByUsername(@PathVariable String username) {
+        return this.userService.getUserByUsername(username);
+    }
     @RequestMapping(value = "/createDto", method = RequestMethod.POST)
     public UserDto createDto(@RequestBody UserDto userDto) {
         return this.userService.createDto(null, userDto);

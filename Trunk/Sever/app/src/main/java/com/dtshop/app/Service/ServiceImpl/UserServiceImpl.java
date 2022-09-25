@@ -8,6 +8,7 @@ import com.dtshop.app.Dto.FunctionDto.SearchDto;
 import com.dtshop.app.Dto.RoleDto;
 import com.dtshop.app.Dto.UserDto;
 import com.dtshop.app.Repository.RoleRepository;
+import com.dtshop.app.Repository.RoleUserRepository;
 import com.dtshop.app.Repository.UserRepository;
 import com.dtshop.app.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RoleRepository roleRepos;
 
+    @Autowired
+    private RoleUserRepository roleUserRepos;
+
     @PersistenceContext
     private EntityManager manager;
     @Override
@@ -57,6 +61,18 @@ public class UserServiceImpl implements UserService {
                 entity = userSerOptional.get();
                 return new UserDto(entity, true);
             }
+        }
+        return null;
+    }
+
+    @Override
+    public UserDto getUserByUsername(String username) {
+        if(username != null) {
+            Long number = this.userRepos.checkUsername(username);
+            if(number==1) {
+                return this.roleUserRepos.getUserByUsername(username);
+            }
+            return null;
         }
         return null;
     }
