@@ -1,4 +1,8 @@
 .wrapper {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
     width: 100%;
     height: var(--default-layout-header-height);
     display: flex;
@@ -15,9 +19,14 @@
     width: var(--default-layout-width);
 }
 
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
 .logo {
-    width: 40px;
-    height: 40px;
+    width: 66px;
+    height: auto;
     object-fit: cover;
 
 }

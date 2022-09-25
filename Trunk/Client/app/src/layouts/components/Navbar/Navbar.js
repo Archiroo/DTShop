@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { } from '@fortawesome/free-regular-svg-icons';
+import Button from "../../../components/Button/Button";
 const cx = classNames.bind(styles)
 
 function Navbar() {
@@ -11,43 +12,53 @@ function Navbar() {
         <nav >
             <ul className={cx('navbar')}>
                 <li className={cx('navbar-item')}>
-                    <Link to='/' className={cx('navbar-link')}>
+                    <Button to='/' className={cx('navbar-link', {
+                        'text': true
+                    })}>
                         Home
-                    </Link>
+                    </Button>
                 </li>
                 <li className={cx('navbar-item')}>
-                    <Link to='/drink-menu' className={cx('navbar-link')}>
+                    <Button to='/drink-menu' className={cx('navbar-link', {
+                        'text': true
+                    })}>
                         Menu
-                    </Link>
+                    </Button>
                 </li>
                 <li className={cx('navbar-item')}>
-                    <Link to='/collection' className={cx('navbar-link')}>
+                    <Button to='/collection' className={cx('navbar-link', {
+                        'text': true
+                    })}>
                         Collection
-                    </Link>
+                    </Button>
                 </li>
                 <li className={cx('navbar-item')}>
-                    <Link to='/about-us' className={cx('navbar-link')}>
+                    <Button to='/about-us' className={cx('navbar-link', {
+                        'text': true
+                    })}>
                         About Us
-                    </Link>
+                    </Button>
                 </li>
                 <li className={cx('navbar-item')}>
-                    <Link to='/blog' className={cx('navbar-link')}>
+                    <Button to='/blog' className={cx('navbar-link', {
+                        'text': true
+                    })}>
                         Blog
-                    </Link>
+                    </Button>
                 </li>
                 <li className={cx('navbar-item')}>
-                    <Link to='/cart' className={cx('navbar-link', {
+                    <Button to='/cart' className={cx('navbar-link', {
                         'cart': true
                     })}>
                         <FontAwesomeIcon icon={faCartShopping} />
-                    </Link>
+                    </Button>
                 </li>
                 <li className={cx('navbar-item')}>
-                    <Link to='/vouchers' className={cx('navbar-link', {
+                    <Button rounded outline to='/vouchers' className={cx('navbar-link', {
                         'gift-vouchers': true
-                    })}>
+                    })} >
                         BUY GIFT VOUCHERS
-                    </Link>
+                    </Button>
                 </li>
             </ul>
         </nav>

@@ -11,11 +11,30 @@
 }
 
 .navbar-link {
+    position: relative;
     padding: 8px 6px;
     font-weight: 600;
+}
 
-    &:hover {
-        color: var(--green);
+.navbar-link.text {
+    background-color: transparent;
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--brown);
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    &:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 }
 
@@ -24,13 +43,13 @@
     align-items: center;
     justify-content: center;
     background-color: var(--white);
+    min-width: unset;
     font-size: 1.6rem;
-    padding: 10px;
     border-radius: 9999px;
     transition: color 0.15s ease;
 
     &:hover {
-        color: var(--green);
+        color: #441e07;
         box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     }
 }
@@ -40,14 +59,14 @@
 .navbar-link.gift-vouchers {
     padding: 10px 8px;
     color: var(--white);
-    background-color: var(--black);
+    background-color: var(--brown);
     border-radius: 9999px;
     transition: background-color 0.3s ease;
     border: 1px solid transparent;
 
     &:hover {
         background-color: var(--white);
-        color: var(--black);
-        border: 1px solid var(--black);
+        color: var(--brown);
+        border: 1px solid var(--brown);
     }
 }

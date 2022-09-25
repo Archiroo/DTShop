@@ -1,0 +1,63 @@
+.wrapper {
+    width: 100%;
+}
+
+.container {
+    position: relative;
+}
+
+.banner-img {
+    width: 100%;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+    background-color: var(--white);
+    min-height: 230px;
+    border-radius: 4px;
+    position: absolute;
+    top: 25%;
+    left: 5%;
+}
+
+.icon-banner {
+    position: absolute;
+    top: -15%;
+    background-color: var(--white);
+    border: 2px solid var(--brown);
+    border-radius: 9999px;
+    padding: 4px;
+    width: 66px;
+    height: 66px;
+    object-fit: scale-down;
+    box-shadow: var(--white) 0px 0px 8px;
+}
+
+.slogan {
+    font-size: 4rem;
+    color: var(--text-color);
+}
+
+.sub-slogan {
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+.action {
+    margin-top: 20px;
+
+    .download-app {
+        transition: color 0.2s ease;
+    }
+
+    .only-text {
+        font-size: 2rem;
+        background-color: transparent;
+        color: var(--text-color);
+    }
+}
