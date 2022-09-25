@@ -11,28 +11,36 @@ import com.dtshop.app.Repository.RoleRepository;
 import com.dtshop.app.Repository.RoleUserRepository;
 import com.dtshop.app.Repository.UserRepository;
 import com.dtshop.app.Service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
-@Service
-public class UserServiceImpl implements UserService {
+@Service @Transactional
+public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository userRepos;
 
     @Autowired
     private RoleRepository roleRepos;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private RoleUserRepository roleUserRepos;
@@ -43,6 +51,24 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> getAllDto() {
         // get All
         return this.userRepos.getAllDto();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserDto userDto = this.roleUserRepos.getUserByUsername(username);
+        if(userDto == null) {
+            System.out.println("User not found");
+            throw new UsernameNotFoundException("User not found");
+        } else {
+            System.out.println("User is: " + username);
+        }
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        if(userDto.getRoles() != null && userDto.getRoles().size() > 0) {
+            for(RoleDto item : userDto.getRoles()) {
+                authorities.add(new SimpleGrantedAuthority(item.getName()));
+            }
+        }
+        return new org.springframework.security.core.userdetails.User(userDto.getUsername(), userDto.getPassword(), authorities);
     }
 
     @Override
@@ -104,8 +130,11 @@ public class UserServiceImpl implements UserService {
         if(dto.getUsername() != null) {
             entity.setUsername(dto.getUsername());
         }
+//        if(dto.getPassword() != null) {
+//            entity.setPassword(dto.getPassword());
+//        }
         if(dto.getPassword() != null) {
-            entity.setPassword(dto.getPassword());
+            entity.setPassword(passwordEncoder.encode(dto.getPassword()));
         }
         if(dto.getLevel() != null) {
             entity.setLevel(dto.getLevel());
