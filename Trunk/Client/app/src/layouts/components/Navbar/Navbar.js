@@ -9,57 +9,41 @@ const cx = classNames.bind(styles)
 
 function Navbar() {
     return (
-        <nav >
-            <ul className={cx('navbar')}>
-                <li className={cx('navbar-item')}>
-                    <Button to='/' className={cx('navbar-link', {
-                        'text': true
-                    })}>
+        <nav className={cx('navbar')}>
+            <ul className={cx('nav-text')}>
+                <li className={cx('nav-text__item')}>
+                    <Button className={cx('nav-text__link')} to='/'>
                         Home
                     </Button>
                 </li>
-                <li className={cx('navbar-item')}>
-                    <Button to='/drink-menu' className={cx('navbar-link', {
-                        'text': true
-                    })}>
+                <li className={cx('nav-text__item')}>
+                    <Button className={cx('nav-text__link')} to='/about'>
+                        About
+                    </Button>
+                </li>
+                <li className={cx('nav-text__item')}>
+                    <Button className={cx('nav-text__link')} to='/menu'>
                         Menu
                     </Button>
                 </li>
-                <li className={cx('navbar-item')}>
-                    <Button to='/collection' className={cx('navbar-link', {
-                        'text': true
-                    })}>
-                        Collection
+                <li className={cx('nav-text__item')}>
+                    <Button className={cx('nav-text__link')} to='/delivery'>
+                        Delivery
                     </Button>
                 </li>
-                <li className={cx('navbar-item')}>
-                    <Button to='/about-us' className={cx('navbar-link', {
-                        'text': true
-                    })}>
-                        About Us
+                <li className={cx('nav-text__item')}>
+                    <Button className={cx('nav-text__link')} to='#'>
+                        More
                     </Button>
                 </li>
-                <li className={cx('navbar-item')}>
-                    <Button to='/blog' className={cx('navbar-link', {
-                        'text': true
-                    })}>
-                        Blog
-                    </Button>
-                </li>
-                <li className={cx('navbar-item')}>
-                    <Button to='/cart' className={cx('navbar-link', {
-                        'cart': true
-                    })}>
-                        <FontAwesomeIcon icon={faCartShopping} />
-                    </Button>
-                </li>
-                <li className={cx('navbar-item')}>
-                    <Button rounded outline to='/vouchers' className={cx('navbar-link', {
-                        'gift-vouchers': true
-                    })} >
-                        BUY GIFT VOUCHERS
-                    </Button>
-                </li>
+            </ul>
+            <ul className={cx('nav-button')}>
+                <Button className={cx('nav-button__link')} to='/' rounded outline>
+                    Order online
+                </Button>
+                <Button className={cx('nav-button__link')} to='/' rounded primary>
+                    Reservate
+                </Button>
             </ul>
         </nav>
     );

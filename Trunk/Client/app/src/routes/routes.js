@@ -2,12 +2,13 @@ import config from '~/config';
 
 import Home from '~/pages/Home';
 import Product from '~/pages/Product';
-import DrinkMenu from '~/pages/DrinkMenu';
-import AboutUs from '~/pages/AboutUs';
+import Menu from '~/pages/Menu';
+import About from '~/pages/About';
 import Blog from '~/pages/Blog';
 import Collection from '~/pages/Collection';
 import Cart from '../pages/Cart';
 import Vouchers from '../pages/Vouchers';
+import Delivery from '../pages/Delivery';
 
 // Publics routes
 const publicRoutes = [
@@ -21,12 +22,12 @@ const publicRoutes = [
         component: Product,
     },
     {
-        path: config.routes.drinkMenu,
-        component: DrinkMenu,
+        path: config.routes.menu,
+        component: Menu,
     },
     {
-        path: config.routes.aboutUs,
-        component: AboutUs,
+        path: config.routes.about,
+        component: About,
     },
     {
         path: config.routes.blog,
@@ -43,6 +44,10 @@ const publicRoutes = [
     {
         path: config.routes.vouchers,
         component: Vouchers,
+    },
+    {
+        path: config.routes.delivery,
+        component: Delivery,
     },
 ];
 
