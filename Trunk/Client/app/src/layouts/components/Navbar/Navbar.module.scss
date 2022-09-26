@@ -8,6 +8,7 @@
 // Navbar only text
 .nav-text {
     display: flex;
+    align-items: center;
 }
 
 .nav-text__item {
@@ -27,6 +28,30 @@
 
     ;
 }
+
+.nav-text__no-link {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 2rem;
+    font-family: ProximaNova;
+    color: var(--text-color);
+    transition: color 0.25s ease;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--primary)
+    }
+
+    .arrow {
+        margin-left: 4px;
+        font-size: 1.6rem;
+    }
+}
+
+
 
 
 // Navbar button

@@ -61,12 +61,12 @@
 }
 
 .outline {
-    color: var(--brown);
+    color: var(--primary);
     border-color: currentColor;
 
     &:hover {
         border-color: currentColor;
-        background-color: var(--brown);
+        background-color: var(--primary);
         color: var(--white);
     }
 }

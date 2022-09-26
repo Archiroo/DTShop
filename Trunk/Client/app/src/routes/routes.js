@@ -9,6 +9,7 @@ import Collection from '~/pages/Collection';
 import Cart from '../pages/Cart';
 import Vouchers from '../pages/Vouchers';
 import Delivery from '../pages/Delivery';
+import Contact from '../pages/Contact';
 
 // Publics routes
 const publicRoutes = [
@@ -48,6 +49,10 @@ const publicRoutes = [
     {
         path: config.routes.delivery,
         component: Delivery,
+    },
+    {
+        path: config.routes.contact,
+        component: Contact,
     },
 ];
 

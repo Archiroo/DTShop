@@ -14,7 +14,26 @@ function Home() {
 
                 {/* Banner */}
                 <div className={cx('overview')}>
+                    <div className={cx('bg-overview')}>
+                        <div className={cx('bg-ov-left')}></div>
+                        <div className={cx('bg-ov-right')}></div>
+                    </div>
+                    <div className={cx('inner')}>
+                        <div className={cx('ov-content')}>
+                            <h1 className={cx('title')}>
+                                The best place to eat <span className={cx('title-highlight')}>burgers in LA</span>.
+                            </h1>
+                            <span className={cx('sub-title')}>
+                                Lorem ipsum dolor sit amet consectetur adipiscing elit ugue quam diam vitae velit bibendum elementum eget non vivamus volutpat odio cras vestibulum purus aliquam.
+                            </span>
 
+                            <div className={cx('ov-button')}>
+                                <Button className={cx('ov-reservateBtn')} rounded primary>Reservate</Button>
+                                <Button className={cx('ov-orderBtn')} rounded outline>Order online</Button>
+                            </div>
+                        </div>
+                        <img className={cx('ov-img')} src={images.overviewImg} alt="AG - Restaurant" />
+                    </div>
                 </div>
 
                 {/* Menu-categories */}

@@ -2,10 +2,90 @@
     width: 100%;
 }
 
-.container {}
+// overview
 
-// Banner
-
-.banner {
+.overview {
+    min-height: 600px;
     position: relative;
+}
+
+.bg-overview {
+    display: flex;
+}
+
+.bg-ov-left {
+    background-color: var(--white);
+    height: 600px;
+    width: 60%;
+}
+
+.bg-ov-right {
+    height: 600px;
+    width: 40%;
+    background-color: var(--primary);
+}
+
+.inner {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ov-content {
+    padding-right: 32px;
+}
+
+.ov-img {
+
+    transform: rotate(-6deg);
+    width: 450px;
+    border-radius: 24px;
+}
+
+.title {
+    font-size: 6rem;
+    margin-bottom: 24px;
+}
+
+.title-highlight {
+    color: var(--primary);
+}
+
+.sub-title {
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.ov-button {
+    margin-top: 40px;
+    display: flex;
+}
+
+.ov-reservateBtn {
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    transition: transform 0.2s;
+    width: 168px;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.ov-orderBtn {
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    transition: transform 0.2s;
+    width: 168px;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }

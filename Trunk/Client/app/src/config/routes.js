@@ -6,8 +6,9 @@ const routes = {
     blog: '/blog',
     collection: '/collection',
     cart: '/cart',
-    vouchers: 'vouchers',
-    delivery: 'delivery',
+    vouchers: '/vouchers',
+    delivery: '/delivery',
+    contact: '/contact',
 }
 
 export default routes

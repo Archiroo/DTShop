@@ -7,6 +7,7 @@ const images = {
     gentSign: require('~/assets/images/gent-sign.png'),
     imgInBanner: require('~/assets/images/hatcaphe.png'),
     bgRepeat: require('~/assets/images/bg-repeat.png'),
+    overviewImg: require('~/assets/images/overview.jpeg'),
 }
 
 export default images
