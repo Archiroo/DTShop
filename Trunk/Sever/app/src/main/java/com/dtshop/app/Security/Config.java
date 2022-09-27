@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,6 +18,7 @@ import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration @EnableWebSecurity @RequiredArgsConstructor
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class Config extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
@@ -37,8 +39,9 @@ public class Config extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(STATELESS);
 //      Phân quyền các role
         http.authorizeHttpRequests().antMatchers("/api/login/**", "api/refresh_token/**").permitAll();
-        http.authorizeRequests().antMatchers(GET, "api/user/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER");
-        http.authorizeRequests().antMatchers(GET, "api/user/createDto/**").hasAnyAuthority("ROLE_ADMIN");
+//        http.authorizeRequests().antMatchers(GET, "api/user/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER");
+//        http.authorizeRequests().antMatchers(GET, "api/user/createDto/**").hasAnyAuthority("ROLE_ADMIN");
+
         http.authorizeHttpRequests().anyRequest().authenticated();
         http.addFilter(customAuthencationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -169,7 +169,7 @@ public class AdministrativeUnitServiceImpl implements AdministrativeUnitService 
                 pageIndex = 0;
             }
             Pageable pageable = PageRequest.of(pageIndex, pageSize);
-            String sql = "Select com.dtshop.app.Dto.AdministrativeUnitDto(entity, true) From AdministrativeUnit entity where (1=1)";
+            String sql = "Select new com.dtshop.app.Dto.AdministrativeUnitDto(entity, true) From AdministrativeUnit entity where (1=1)";
             String sqlCount = "Select count(entity.id) From AdministrativeUnit entity Where (1=1) ";
             String whereClause = "";
             String orderBy = " Order by entity.dateCreate DESC";
@@ -187,7 +187,7 @@ public class AdministrativeUnitServiceImpl implements AdministrativeUnitService 
             q.setFirstResult(pageIndex*pageSize);
             q.setMaxResults(pageSize);
             Long numberResult = (Long) qCount.getSingleResult();
-            Page<AdministrativeUnitDto> page = new PageImpl<>(q.getResultList(), pageable, pageSize);
+            Page<AdministrativeUnitDto> page = new PageImpl<>(q.getResultList(), pageable, numberResult);
             return page;
         }
         return null;
