@@ -36,6 +36,12 @@ public class AdministrativeUnit {
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<AdministrativeUnit> childrenAdministrative; // Đơn vị con
 
+    @OneToMany(mappedBy = "administrativeUnit", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<DeliveryUnit> deliveryUnits;  // Map bảng delivery: Giao hàng
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Store> stores; // Map bảng store: Cửa hàng
+
     public Long getId() {
         return id;
     }
@@ -90,5 +96,20 @@ public class AdministrativeUnit {
 
     public void setChildrenAdministrative(Set<AdministrativeUnit> childrenAdministrative) {
         this.childrenAdministrative = childrenAdministrative;
+    }
+    public Set<DeliveryUnit> getDeliveryUnits() {
+        return deliveryUnits;
+    }
+
+    public void setDeliveryUnits(Set<DeliveryUnit> deliveryUnits) {
+        this.deliveryUnits = deliveryUnits;
+    }
+
+    public Set<Store> getStores() {
+        return stores;
+    }
+
+    public void setStores(Set<Store> stores) {
+        this.stores = stores;
     }
 }

@@ -7,10 +7,12 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.dtshop.app.Dto.FunctionDto.SearchDto;
 import com.dtshop.app.Dto.RoleDto;
 import com.dtshop.app.Dto.UserDto;
+import com.dtshop.app.Other.DTShopConstant;
 import com.dtshop.app.Service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,7 @@ public class RestUserController {
     @Autowired
     private UserService userService;
 
+    @Secured({DTShopConstant.ROLE_ADMIN})
     @RequestMapping(value = "/getAllDto", method = RequestMethod.GET)
     public List<UserDto> getAllDto() {
         return this.userService.getAllDto();
@@ -48,6 +51,7 @@ public class RestUserController {
     public UserDto getUserByUsername(@PathVariable String username) {
         return this.userService.getUserByUsername(username);
     }
+    @Secured({DTShopConstant.ROLE_ADMIN})
     @RequestMapping(value = "/createDto", method = RequestMethod.POST)
     public UserDto createDto(@RequestBody UserDto userDto) {
         return this.userService.createDto(null, userDto);
