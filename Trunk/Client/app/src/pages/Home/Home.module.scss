@@ -31,7 +31,6 @@
 .inner {
     position: absolute;
     top: 10%;
-    right: 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,7 +41,7 @@
 }
 
 .ov-img {
-
+    margin-top: -36px;
     transform: rotate(-6deg);
     width: 500px;
     border-radius: 24px;
