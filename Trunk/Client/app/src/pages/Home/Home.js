@@ -1,7 +1,8 @@
 import classNames from "classnames/bind";
 import styles from './Home.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 import Button from '~/components/Button'
 import images from "~/assets/images";
@@ -34,11 +35,100 @@ function Home() {
                         </div>
                         <img className={cx('ov-img')} src={images.overviewImg} alt="AG - Restaurant" />
                     </div>
+                    <div className={cx('delivery-unit')}>
+                        <h2 className={cx('delivery-title')}>
+                            Order from your favorite app today!
+                        </h2>
+                        <ul className={cx('delivery-list')}>
+                            <li className={cx('delivery-item')}>
+                                <a href="">
+                                    <img src={images.ubereats} alt="Delivery Unit" />
+                                </a>
+                            </li>
+                            <li className={cx('delivery-item')}>
+                                <a href="">
+                                    <img src={images.doordash} alt="Delivery Unit" />
+                                </a>
+                            </li>
+                            <li className={cx('delivery-item')}>
+                                <a href="">
+                                    <img src={images.postmates} alt="Delivery Unit" />
+                                </a>
+                            </li>
+                            <li className={cx('delivery-item')}>
+                                <a href="">
+                                    <img src={images.rappi} alt="Delivery Unit" />
+                                </a>
+                            </li>
+                            <li className={cx('delivery-item')}>
+                                <a href="">
+                                    <img src={images.grubhub} alt="Delivery Unit" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={cx('line-footer-overview')}></div>
                 </div>
 
                 {/* Menu-categories */}
                 <div className={cx('menu-categories')}>
-                    menu-categories
+                    <h1 className={cx('menu-categories__title')}>
+                        Browse our menu
+                    </h1>
+                    <ul className={cx('menu-categories__list')}>
+                        <li className={cx('menu-categories__item')}>
+                            <Link>
+                                <img src={images.breakfast} className={cx('categories-item__img')} alt="Categories" />
+                                <h3 className={cx('categories-item__title')}>Breakfast</h3>
+                                <p className={cx('categories-item__desc')}>
+                                    Lorem ipsum dolor sit amet consectetur adipiscing elit ugue quam diam.
+                                </p>
+                                <span className={cx('explore-menu')}>
+                                    Explore menu
+                                    <FontAwesomeIcon className={cx('explore-menu__icon')} icon={faAngleRight} />
+                                </span>
+                            </Link>
+                        </li>
+                        <li className={cx('menu-categories__item')}>
+                            <Link>
+                                <img src={images.maindishes} className={cx('categories-item__img')} alt="Categories" />
+                                <h3 className={cx('categories-item__title')}>Breakfast</h3>
+                                <p className={cx('categories-item__desc')}>
+                                    Lorem ipsum dolor sit amet consectetur adipiscing elit ugue quam diam.
+                                </p>
+                                <span className={cx('explore-menu')}>
+                                    Explore menu
+                                    <FontAwesomeIcon className={cx('explore-menu__icon')} icon={faAngleRight} />
+                                </span>
+                            </Link>
+                        </li>
+                        <li className={cx('menu-categories__item')}>
+                            <Link>
+                                <img src={images.drinks} className={cx('categories-item__img')} alt="Categories" />
+                                <h3 className={cx('categories-item__title')}>Breakfast</h3>
+                                <p className={cx('categories-item__desc')}>
+                                    Lorem ipsum dolor sit amet consectetur adipiscing elit ugue quam diam.
+                                </p>
+                                <span className={cx('explore-menu')}>
+                                    Explore menu
+                                    <FontAwesomeIcon className={cx('explore-menu__icon')} icon={faAngleRight} />
+                                </span>
+                            </Link>
+                        </li>
+                        <li className={cx('menu-categories__item')}>
+                            <Link>
+                                <img src={images.desserts} className={cx('categories-item__img')} alt="Categories" />
+                                <h3 className={cx('categories-item__title')}>Breakfast</h3>
+                                <p className={cx('categories-item__desc')}>
+                                    Lorem ipsum dolor sit amet consectetur adipiscing elit ugue quam diam.
+                                </p>
+                                <span className={cx('explore-menu')}>
+                                    Explore menu
+                                    <FontAwesomeIcon className={cx('explore-menu__icon')} icon={faAngleRight} />
+                                </span>
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
 
                 {/* About us */}
@@ -81,7 +171,7 @@ function Home() {
                     footer
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

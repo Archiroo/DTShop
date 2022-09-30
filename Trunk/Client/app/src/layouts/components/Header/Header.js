@@ -12,7 +12,7 @@ function Header() {
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <Link className={cx('logo-link')} to="/">
-                    <img className={cx('logo')} src={images.logoHeader.default} alt="Logo" />
+                    <img className={cx('logo')} src={images.logoHeader} alt="Logo" />
                     <p className={cx('logo-name')}>
                         AG - Restaurant
                     </p>
