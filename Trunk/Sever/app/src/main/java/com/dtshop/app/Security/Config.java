@@ -14,11 +14,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration @EnableWebSecurity @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class Config extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
@@ -37,11 +36,9 @@ public class Config extends WebSecurityConfigurerAdapter {
         customAuthencationFilter.setFilterProcessesUrl("/api/login"); // -> http://localhost:9000/dtshop/api/login
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
-//      Phân quyền các role
         http.authorizeHttpRequests().antMatchers("/api/login/**", "api/refresh_token/**").permitAll();
 //        http.authorizeRequests().antMatchers(GET, "api/user/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER");
 //        http.authorizeRequests().antMatchers(GET, "api/user/createDto/**").hasAnyAuthority("ROLE_ADMIN");
-
         http.authorizeHttpRequests().anyRequest().authenticated();
         http.addFilter(customAuthencationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
