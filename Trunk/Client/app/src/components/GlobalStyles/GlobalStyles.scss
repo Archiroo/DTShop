@@ -12,6 +12,9 @@
     // Default layout
     --default-layout-header-height: 112px;
     --default-layout-width: 1224px;
+
+    // margin left right
+    --margin-left-right: calc(calc(100vw - var(--default-layout-width))/2 * -1);
 }
 
 * {
