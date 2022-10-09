@@ -3,12 +3,6 @@ import { Fragment } from 'react';
 
 import { DefaultLayout } from "./layouts";
 import { publicRoutes } from '~/routes'
-import Home from '~/pages/Home';
-import Product from '~/pages/Product';
-import DrinkMenu from '~/pages/DrinkMenu';
-import AboutUs from './pages/AboutUs';
-import Blog from './pages/Blog';
-import Collection from './pages/Collection';
 
 
 function App() {

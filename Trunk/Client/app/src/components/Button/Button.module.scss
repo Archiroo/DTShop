@@ -56,17 +56,17 @@
 
     &:hover {
         border-color: var(--primary);
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #FE2C55;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), var(--primary);
     }
 }
 
 .outline {
-    color: var(--brown);
+    color: var(--primary);
     border-color: currentColor;
 
     &:hover {
         border-color: currentColor;
-        background-color: var(--brown);
+        background-color: var(--primary);
         color: var(--white);
     }
 }

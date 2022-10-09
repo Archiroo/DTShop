@@ -1,17 +1,20 @@
 @import 'normalize.css';
 
 :root {
-    --primary: #fe2c55;
+    --primary: #ff7629;
     --white: #fff;
     --black: #000;
-    --brown: #441e07;
+    --brown: #582b10;
     --text-color: #161823;
 
     --font-family: 'ProximaNova', sans-serif;
 
     // Default layout
-    --default-layout-header-height: 60px;
-    --default-layout-width: 1296px;
+    --default-layout-header-height: 112px;
+    --default-layout-width: 1224px;
+
+    // margin left right
+    --margin-left-right: calc(calc(100vw - var(--default-layout-width))/2 * -1);
 }
 
 * {

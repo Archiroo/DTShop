@@ -1,14 +1,14 @@
 const routes = {
     home: '/',
     products: '/products',
-    drinkMenu: '/drink-menu',
-    aboutUs: '/about-us',
+    menu: '/menu',
+    about: '/about',
     blog: '/blog',
     collection: '/collection',
     cart: '/cart',
-    vouchers: 'vouchers',
-
-
+    vouchers: '/vouchers',
+    delivery: '/delivery',
+    contact: '/contact',
 }
 
 export default routes
